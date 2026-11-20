@@ -1,0 +1,10 @@
+# ============================================================================
+# sdkconfig.defaults do APP DE TESTE do bike_state (NÃO afeta o app real)
+#
+# O menu do Unity (unity_run_menu) espera você digitar lendo a UART por
+# POLLING, sem nunca bloquear. A task main (prio 1) acaba monopolizando a
+# CPU 0 e a IDLE0 (prio 0) não consegue alimentar o Task Watchdog.
+# Em teste isso é esperado e inofensivo, então desligamos a checagem da IDLE
+# do CPU 0. NUNCA faça isto no sdkconfig do app real da bicicleta.
+# ============================================================================
+CONFIG_ESP_TASK_WDT_CHECK_IDLE_TASK_CPU0=n
